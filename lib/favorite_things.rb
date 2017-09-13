@@ -15,8 +15,12 @@ class Item
 
   def save()
     @@list.each do |item|
-      if self.name == item.name || self.rank == item.rank
-         return
+      if self.name == item.name
+        self.rank = item.rank
+        @@list.delete(item)
+      elsif self.rank == item.rank
+        self.name = item.name
+        @@list.delete(item)
       end
     end
     @@list.push(self)

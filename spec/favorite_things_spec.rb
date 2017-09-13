@@ -26,14 +26,15 @@ describe("Item") do
       item.save()
       expect(Item.all()).to(eq([item]))
     end
-
-    it('will not push repeated item (rank or name) to list') do
-      item = Item.new('ice cream', 1)
-      item.save()
-      item2= Item.new('ice cream', 9)
-      expect(Item.all()).to(eq([item]))
-    end
   end
+
+  #   it('will not push repeated item (rank or name) to list') do
+  #     item = Item.new('ice cream', 1)
+  #     item.save()
+  #     item2= Item.new('ice cream', 9)
+  #     expect(Item.all()).to(eq([item]))
+  #   end
+  # end
 
   describe("#id") do
       it("increments an id by 1 each time a new item is added") do
@@ -76,4 +77,15 @@ describe("Item") do
       expect(Item.sort()).to(eq([item2,item]))
     end
   end
-end
+
+  describe('.save') do
+    it('overwrites a name if a new name is entered with the same rank') do
+      item = Item.new('cake', 1)
+      item.save()
+      item2 = Item.new('family', 1)
+      item2.save()
+      expect(Item.all()).to(eq([item2]))
+    end
+  end
+
+end #Item class
