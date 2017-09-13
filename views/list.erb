@@ -1,7 +1,7 @@
 <h2>What are your favorite things?</h2>
 
 <% @list.each do |item| %>
-  <h4><a href="/items/<%= item.id %>"><%= item.name %></a></h4>
+  <h4><a href="/items/<%= item.id %>"><%= item.name %> <%= item.rank %></a></h4>
 <% end %>
 
 <h4>Add items to the list:</h4>
@@ -17,3 +17,5 @@
   </div>
   <button type="submit" class="btn">Add!</button>
 </form>
+
+<!-- <h4><%= @string_to_display %></h4> -->

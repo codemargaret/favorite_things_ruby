@@ -14,6 +14,11 @@ class Item
   end
 
   def save()
+    @@list.each do |item|
+      if self.name == item.name || self.rank == item.rank
+         return
+      end
+    end
     @@list.push(self)
   end
 
@@ -31,7 +36,10 @@ class Item
     end
   end
 
+  def update
+  end
+
   def self.sort()
-    @@list.sort { |x| x.rank}
+    @@list.sort_by { |x| x.rank}
   end
 end
